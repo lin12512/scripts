@@ -1,0 +1,7 @@
+{
+  "drawable-mdpi": "scale-100",
+  "drawable-hdpi": "scale-150",
+  "drawable-xhdpi": "scale-200",
+  "drawable-xxhdpi": "scale-300",
+  "drawable-xxxhdpi": "scale-400"
+}
