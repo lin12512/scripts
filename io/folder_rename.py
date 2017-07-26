@@ -1,6 +1,7 @@
 import sys
 import os
 import json
+import argparse
 
 #dict = {'drawable-mdpi': 'scale-100', "drawable-hdpi": "scale-150", "drawable-xhdpi": "scale-200", "drawable-xxhdpi": "scale-300", "drawable-xxxhdpi": "scale-400"}
 
@@ -23,9 +24,25 @@ def travel(basedir):
       
 
 if __name__ == "__main__":
-  js=open('config.json')
-  dict=json.load(js)
+  parser = argparse.ArgumentParser()
+
+  parser.add_argument("-f", "--config", help="config file that stores key pairs")
+  parser.add_argument("-d", "--dir", help="base dir")
+
+  args = parser.parse_args()
+
   basedir = '.'
-  if(len(sys.argv)>1 and os.path.isdir(sys.argv[1])):
-    basedir = sys.argv[1]
+  if args.dir:
+    basedir = args.dir
+
+  config = 'config.json'
+  if args.config:
+    config = args.config
+
+  try:  
+    js=open(config)
+    dict=json.load(js)
+  except Exception, ex:
+    print ex
+    
   travel(basedir)
